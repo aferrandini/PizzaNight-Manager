@@ -1,0 +1,26 @@
+PizzaNight\ManagementBundle\Entity\Contact:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+    email:
+      type: string
+      length: 255
+    phone:
+      type: string
+      length: '30'
+    type:
+      type: string
+      length: '100'
+    about_me:
+      type: text
+    created_at:
+      type: datetime
+  lifecycleCallbacks: {  }

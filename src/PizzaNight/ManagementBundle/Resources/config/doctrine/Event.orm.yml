@@ -1,0 +1,20 @@
+PizzaNight\ManagementBundle\Entity\Event:
+  type: entity
+  table: null
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    date:
+      type: datetime
+    max_people:
+      type: integer
+    name:
+      type: string
+      length: 255
+    url:
+      type: string
+      length: 255
+  lifecycleCallbacks: {  }

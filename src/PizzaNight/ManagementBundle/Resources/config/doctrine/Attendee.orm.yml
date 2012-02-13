@@ -1,0 +1,30 @@
+PizzaNight\ManagementBundle\Entity\Attendee:
+  type: entity
+  table: null
+  fields:
+    event_id:
+      type: integer
+      id: true
+    contact_id:
+      type: integer
+      id: true
+    date:
+      type: datetime
+    slug:
+      type: string
+      length: 20
+    status:
+      type: smallint
+    register_date:
+      type: datetime
+      nullable: true
+  manyToOne:
+    event:
+      targetEntity: Event
+      cascade:  {}
+      mappedBy: id
+    contact:
+      targetEntity: Contact
+      cascade:  {}
+      mappedBy: id
+  lifecycleCallbacks: {  }

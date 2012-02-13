@@ -1,0 +1,23 @@
+{% extends "PizzaNightManagementBundle::layout.html.twig" %}
+
+{% block subtitle %} - Eventos{% endblock %}
+
+{% block content %}
+    <h1>Listado de eventos</h1>
+
+    {% for event in events %}
+        <div class="event" style="margin: 5px">
+            <div align="right">
+                <small>{{ event.date|date("l dS F Y @ H:i") }}</small>
+            </div>
+            <div style="border: 1px solid #808080; padding: 10px">
+                <div class="event_actions" style="float: right">
+                    <a href="{{ path('_attendees', {"id": event.id}) }}">Asistentes</a> | <a href="{{ path('_events') }}">Lista final</a>
+                </div>
+                <div class="event_date" style="font-size: 2em">{{ event.name }}</div>
+            </div>
+        </div>
+    {% else %}
+        No hay eventos
+    {% endfor %}
+{% endblock content %}

@@ -1,14 +1,7 @@
-PizzaNightWebServiceBundle:
-    resource: "@PizzaNightWebServiceBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 PizzaNightManagementBundle:
     resource: "@PizzaNightManagementBundle/Controller/"
     type:     annotation
     prefix:   /
 
-PizzaNightIntranetBundle:
-    resource: "@PizzaNightIntranetBundle/Controller/"
-    type:     annotation
-    prefix:   /
+login_check:
+    pattern:   /login_check

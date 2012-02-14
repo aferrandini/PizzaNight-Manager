@@ -85,7 +85,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-	color: #f0ff00;
+	color: #b9f01d;
     text-decoration: none;
 }
 
@@ -151,7 +151,7 @@ aside.event-date p {
 
 a
 {
-    color:           #08C;
+    color:           #b9f01d;
     text-decoration: none;
 }
 
@@ -190,7 +190,7 @@ h2
     font-family:      "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 
     margin-bottom:    10px;
-    background-color: #aacd4e;
+    background-color: #b9f01d;
     padding:          2px 4px;
     display:          inline-block;
     text-transform:   uppercase;
@@ -337,7 +337,7 @@ input[type=text], input[type=password]
     color: white;
 
     border:     solid 1px #a7da39;
-    background: #a7da39;
+    background: #b9f01d;
     background: -webkit-gradient(linear, left top, left bottom, from(#a7da39), to(#6a9211));
     background: -moz-linear-gradient(top,  #a7da39,  #6a9211);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7da39', endColorstr='#6a9211');

@@ -2,43 +2,33 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/pizzanightmanagement/css/demo.css') }}" type="text/css" media="all" />
     <title>Pizza Night {% block subtitle %}{% endblock %}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
-<div id="symfony-wrapper">
-    <div id="symfony-header">
-        <h1>Pizza Night</h1>
-    </div>
+    <header>
+        <hgroup>
+            <h1>Pizza Night Manager</h1>
+        </hgroup>
+    </header>
 
-    <ul id="menu">
-        {% block content_header_more %}
-        <li><a href="{{ path('_events') }}">Eventos</a></li>
-        {% endblock %}
-    </ul>
+    <nav>
+        <ul>
+            <li><a href="{{ path('_events') }}">Inicio</a></li>
+            <li><a href="{{ path('_events') }}">Eventos</a></li>
+        </ul>
+    </nav>
 
-    <div style="clear: both"></div>
+    <article>
+        <section class="symfony-content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </article>
 
-    {% if app.session.flash('notice') %}
-    <div class="flash-message">
-        <em>Notice</em>: {{ app.session.flash('notice') }}
-    </div>
-    {% endif %}
-
-    {% block content_header %}
-    <div style="clear: both"></div>
-    {% endblock %}
-
-    <div class="symfony-content">
-        {% block content %}
-        {% endblock %}
-    </div>
-
-    {% if code is defined %}
-    <h2>Code behind this page</h2>
-    <div class="symfony-content">{{ code|raw }}</div>
-    {% endif %}
-</div>
+    <footer>
+        <p>PizzaNight 2012&copy;</p>
+    </footer>
 </body>
 </html>

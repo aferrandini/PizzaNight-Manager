@@ -1,0 +1,32 @@
+{% extends "PizzaNightManagementBundle::layout.html.twig" %}
+
+{% block subtitle %} - Eventos{% endblock %}
+
+{% block content %}
+    <h1>Listado de eventos</h1>
+
+    <section>
+    {% for event in events %}
+        <section class="event">
+            <aside class="event-date">
+                <p>{{ event.date|date("l dS F Y @ H:i") }}</p>
+            </aside>
+
+            <section class="event-name">
+                {{ event.name }}
+                <aside class="actions">
+                    {% if event.date|date('U')<"now" %}
+                        <a href="{{ path('_import_registered', {"id": event.id}) }}" title="Importar registrados"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/import_icon.png') }}" alt="Importar registrados"/></a>
+                        <a href="{{ path('_registered', {"id": event.id}) }}" title="Listado de registrados"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/registered_icon.png') }}" alt="Listado de registrados"/></a>
+                    {% endif %}
+                    <a href="{{ path('_attendees', {"id": event.id}) }}" title="Listado de asistentes"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/attendees_icon.png') }}" alt="Listado de asistentes"/></a>
+                </aside>
+            </section>
+        </section>
+    {% else %}
+        <section class="no-data">
+            <p>No hay eventos</p>
+        </section>
+    {% endfor %}
+    </section>
+{% endblock content %}

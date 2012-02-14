@@ -7,10 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Security\Core\SecurityContext;
 
-class DefaultController extends Controller
+class EventsController extends Controller
 {
     /**
-     * @Route("/events", name="_events")
+     * @Route("/", name="_events")
      * @Template()
      */
     public function eventsAction()
@@ -21,10 +21,10 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/attendees/{id}", name="_attendees")
+     * @Route("/{id}/registered", name="_registered")
      * @Template()
      */
-    public function attendeesAction($id)
+    public function registeredAction($id)
     {
         $event = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Event')->find($id);
         $attendees = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findBy(array('event' => $event->getId()));
@@ -33,26 +33,24 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/login", name="_login")
+     * @Route("/{id}/import/registered", name="_import_registered")
      * @Template()
      */
-    public function loginAction()
+    public function importAttendeesAction($id)
     {
-        $request = $this->getRequest();
-        $session = $request->getSession();
 
-        // get the login error if there is one
-        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
-        } else {
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-        }
+    }
 
-        return array(
-            // last username entered by the user
-            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
-            'error'         => $error,
-        );
+    /**
+     * @Route("/{id}/attendees", name="_attendees")
+     * @Template()
+     */
+    public function attendeesAction($id)
+    {
+        $event = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Event')->find($id);
+        $attendees = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findBy(array('event' => $event->getId()));
+
+        return array('attendees' => $attendees);
     }
 
 }

@@ -1,7 +1,10 @@
 PizzaNightManagementBundle:
-    resource: "@PizzaNightManagementBundle/Controller/"
+    resource: "@PizzaNightManagementBundle/Controller"
     type:     annotation
     prefix:   /
 
 login_check:
-    pattern:   /login_check
+    pattern:    /login_check
+
+logout:
+    pattern:    /logout

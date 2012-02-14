@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="{{ asset('bundles/pizzanightmanagement/css/demo.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/pizzanightmanagement/css/main.css') }}" type="text/css" media="all" />
     <title>Pizza Night {% block subtitle %}{% endblock %}</title>
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -14,10 +14,11 @@
     </header>
 
     <nav>
-        <ul>
-            <li><a href="{{ path('_events') }}">Inicio</a></li>
-            <li><a href="{{ path('_events') }}">Eventos</a></li>
-        </ul>
+        <button onclick="javascript:document.location='{{ path('_events') }}'">Inicio</button>
+        {% if app.user %}
+            <button onclick="javascript:document.location='{{ path('_events') }}'">Eventos</button>
+            <button class="float-right" onclick="javascript:document.location='{{ path('logout') }}'">Salir</button>
+        {% endif %}
     </nav>
 
     <article>

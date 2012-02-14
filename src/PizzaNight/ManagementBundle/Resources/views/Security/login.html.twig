@@ -1,0 +1,23 @@
+{% extends "PizzaNightManagementBundle::layout.html.twig" %}
+
+{% block content %}
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+    <form action="{{ path('login_check') }}" method="post">
+        <div id="login-form">
+            <div class="symfony-form-row">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </div>
+
+            <div class="symfony-form-row">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password" />
+            </div>
+
+            <input type="submit" name="login"  class="symfony-button-dark-grey" />
+        </div>
+    </form>
+{% endblock content %}

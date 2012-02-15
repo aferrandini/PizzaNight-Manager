@@ -45,6 +45,8 @@ class ImportRegisteredPeopleCommand extends ContainerAwareCommand
             if(file_exists($filename)) {
                 $output->writeln('PizzaNighters registered:');
                 $output->writeln('----------------------------------------');
+
+                
             } else {
                 throw new \InvalidArgumentException('Please introduce a valid Excel file');
             }

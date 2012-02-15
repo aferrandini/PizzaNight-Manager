@@ -68,3 +68,7 @@
     git=https://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.1
+
+[PHPExcel]
+    git=https://github.com/aferrandini/PHPExcel.git
+    target=/phpexcel

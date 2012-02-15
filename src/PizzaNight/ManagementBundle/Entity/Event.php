@@ -58,7 +58,7 @@ class Event
     /**
      * Get date
      *
-     * @return datetime 
+     * @return DateTime
      */
     public function getDate()
     {

@@ -10,6 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Attendee
 {
     /**
+     * Attendee status
+     */
+    const STATUS_REGISTERED   = 0;
+    const STATUS_ACCEPTED     = 1;
+    const STATUS_REJECTED     = 2;
+    const STATUS_CONFIRMED    = 3;
+    const STATUS_IN_THE_EVENT = 4;
+
+    /**
      * @var integer $event_id
      */
     private $event_id;
@@ -158,5 +167,57 @@ class Attendee
     public function getRegisterDate()
     {
         return $this->register_date;
+    }
+    /**
+     * @var PizzaNight\ManagementBundle\Entity\Event
+     */
+    private $event;
+
+    /**
+     * @var PizzaNight\ManagementBundle\Entity\Contact
+     */
+    private $contact;
+
+
+    /**
+     * Set event
+     *
+     * @param PizzaNight\ManagementBundle\Entity\Event $event
+     */
+    public function setEvent(\PizzaNight\ManagementBundle\Entity\Event $event)
+    {
+        $this->event = $event;
+        $this->setEventId($event->getId());
+    }
+
+    /**
+     * Get event
+     *
+     * @return PizzaNight\ManagementBundle\Entity\Event 
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
+
+    /**
+     * Set contact
+     *
+     * @param PizzaNight\ManagementBundle\Entity\Contact $contact
+     */
+    public function setContact(\PizzaNight\ManagementBundle\Entity\Contact $contact)
+    {
+        $this->contact = $contact;
+        $this->setContactId($contact->getId());
+    }
+
+    /**
+     * Get contact
+     *
+     * @return PizzaNight\ManagementBundle\Entity\Contact 
+     */
+    public function getContact()
+    {
+        return $this->contact;
     }
 }

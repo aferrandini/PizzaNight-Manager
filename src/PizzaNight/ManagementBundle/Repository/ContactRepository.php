@@ -1,6 +1,6 @@
 <?php
 
-namespace PizzaNight\ManagementBundle\Entity;
+namespace PizzaNight\ManagementBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

@@ -1,6 +1,7 @@
 PizzaNight\ManagementBundle\Entity\Contact:
   type: entity
   table: null
+  repositoryClass: PizzaNight\ManagementBundle\Repository\ContactRepository
   fields:
     id:
       type: integer

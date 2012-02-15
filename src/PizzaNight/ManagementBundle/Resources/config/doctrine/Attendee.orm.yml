@@ -1,6 +1,7 @@
 PizzaNight\ManagementBundle\Entity\Attendee:
   type: entity
   table: null
+  repositoryClass: PizzaNight\ManagementBundle\Repository\AttendeeRepository
   fields:
     event_id:
       type: integer

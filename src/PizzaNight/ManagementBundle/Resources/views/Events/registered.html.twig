@@ -1,0 +1,67 @@
+{% extends "PizzaNightManagementBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="evento">
+        <div>
+            <h2>Evento:</h2>
+            <div class="float-right"><h2>{{ event.name }}</h2></div>
+        </div>
+
+        <div>
+            <h2>Fecha:</h2>
+            <div class="float-right"><h2>{{ event.date|date('d/m/Y H:i') }}</h2></div>
+        </div>
+
+        <div>
+            <h2>Aforo m&aacute;ximo:</h2>
+            <div class="float-right"><h2>{{ attendees }}/{{ event.maxpeople }}</h2></div>
+        </div>
+    </div>
+
+    <h1>Listado de personas registradas</h1>
+
+    {% for attendee in registered %}
+        <div class="attendee attendee_{{ attendee.contactid }}">
+            <div class="attendee-status">
+                {% if(attendee.status==0) %}
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icon4.gif") }}" align="top" />
+                {% elseif(attendee.status==1) %}
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icon_status_green.png") }}" align="top" />
+                {% elseif(attendee.status==2) %}
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icon_status_red.gif") }}" align="top" />
+                {% else %}
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/small_k_icon.jpg") }}" align="top" />
+                {% endif %}
+            </div>
+            <div class="attendee-actions">
+                <a href="javascript:void(0)" onclick="javascript:showMoreInfo({{ attendee.contactid }})"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/contact_icon.png") }}" alt="M&aacute;s informaci&oacute;n" /></a>
+                {% if (attendee.status==0) %}
+                    <a href="{{ path('_validate_attendee', {"event_id": attendee.eventid, "contact_id": attendee.contactid}) }}"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/validate_icon.png") }}" alt="Validar" /></a>
+                    <a href="{{ path('_reject_attendee', {"event_id": attendee.eventid, "contact_id": attendee.contactid}) }}"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/reject_icon.png") }}" alt="Rechazar" /></a>
+                {% elseif(attendee.status==1) %}
+                    <a href="{{ path('_reject_attendee', {"event_id": attendee.eventid, "contact_id": attendee.contactid}) }}"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/reject_icon.png") }}" alt="Rechazar" /></a>
+                {% elseif(attendee.status==2) %}
+                    <a href="{{ path('_validate_attendee', {"event_id": attendee.eventid, "contact_id": attendee.contactid}) }}"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/validate_icon.png") }}" alt="Validar" /></a>
+                {% endif %}
+            </div>
+            <div class="attendee-name"><b>{{ attendee.contact.name }}</b> &lt;{{ attendee.contact.email }}&gt;</div>
+            <div class="attendee-moreinfo hidden">
+                More info
+            </div>
+        </div>
+    {% else %}
+        No hay asistentes
+    {% endfor %}
+
+    <div align="right">
+        <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_events") }}'">Listado de eventos</button>
+        <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_attendees", {"id": event.id}) }}'">Listado final de asistentes</button>
+    </div>
+
+    <script type="text/javascript">
+        function showMoreInfo(id)
+        {
+            $('.attendee_'+id+' > .attendee-moreinfo').toggle();
+        }
+    </script>
+{% endblock content %}

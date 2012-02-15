@@ -183,6 +183,31 @@ section.event-name {
     font-size: 2em;
 }
 
+div.evento
+{
+    background-color: #b9f01d;
+    -moz-border-radius:         5px;
+    -webkit-border-radius:      5px;
+    border-radius:              5px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+div.attendee
+{
+    border: 1px solid #444;
+    -moz-border-radius:         5px;
+    -webkit-border-radius:      5px;
+    border-radius:              5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+div.attendee:hover
+{
+    background: #e0ff00;
+}
+
 section > aside.event-date {
     position: absolute;
     right: 0px;
@@ -233,16 +258,14 @@ h1
 h2
 {
     font-weight:   bold;
-    color:         #FFFFFF;
+    color:         #444444;
     /* Font is duplicated of body (sans-serif) */
     font-family:      "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
 
     margin-bottom:    10px;
-    background-color: #b9f01d;
-    padding:          2px 4px;
+    padding:          4px 10px;
     display:          inline-block;
     text-transform:   uppercase;
-
 }
 
 p
@@ -409,6 +432,14 @@ input[type=text], input[type=password]
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#444444');
 }
 
+.symfony-button-dark-grey:hover
+{
+    color:       #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#a7da39), to(#6a9211));
+    background: -moz-linear-gradient(top,  #a7da39,  #6a9211);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a7da39', endColorstr='#6a9211');
+}
+
 .symfony-button-green
 {
     padding: 5px 12px;
@@ -501,4 +532,32 @@ ul#menu
 
 .float-right {
     float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+.attendee-name {
+    padding-left: 30px;
+}
+
+.attendee-status
+{
+    float: left;
+}
+
+.attendee-actions
+{
+    float: right;
+}
+
+.attendee-moreinfo
+{
+    margin-top: 10px;
+}
+
+.hidden
+{
+    display: none;
 }

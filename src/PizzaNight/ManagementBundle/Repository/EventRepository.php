@@ -27,4 +27,5 @@ class EventRepository extends EntityRepository
 
         return $query->getResult();
     }
+
 }

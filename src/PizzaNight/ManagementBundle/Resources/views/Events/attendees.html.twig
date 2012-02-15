@@ -4,18 +4,16 @@
     <h1>Listado de asistentes</h1>
 
     {% for attendee in attendees %}
-        <div class="attendee" style="border: 1px solid #808080; padding: 3px">
-            {% if(attendee.status==0) %}
-                <img src="{{ asset("bundles/pizzanightmanagement/images/icon4.gif") }}" align="top" />
-            {% elseif(attendee.status==1) %}
-                <img src="{{ asset("bundles/pizzanightmanagement/images/icon_status_green.png") }}" align="top" />
-            {% endif %}
-            &nbsp;{{ attendee.contact.name }}</div>
+        <div class="attendee">
+            <div class="float-right">{{ attendee.contact.email }} / {{ attendee.contact.phone }}</div>
+            <div><b>{{ attendee.contact.name }}</b></div>
+        </div>
     {% else %}
         No hay asistentes
     {% endfor %}
 
     <div align="right">
-        <a href="{{ path("_events") }}">Volver</a>
+        <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_events") }}'">Listado de eventos</button>
+        <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_registered", {"id": event.id}) }}'">Gestionar asistentes</button>
     </div>
 {% endblock content %}

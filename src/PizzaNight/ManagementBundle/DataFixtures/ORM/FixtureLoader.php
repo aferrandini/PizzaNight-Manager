@@ -20,9 +20,27 @@ class FixtureLoader implements FixtureInterface
     {
         $contact = new Contact();
         $contact->setCreatedAt(new \DateTime());
-        $contact->setName("Ariel Ferrandini Price");
-        $contact->setEmail("aferrandini@neosistec.com");
-        $contact->setPhone("627550950");
+        $contact->setName("Pedro Perez");
+        $contact->setEmail("p.perez@neosistec.com");
+        $contact->setPhone("610000000");
+        $contact->setType("Profesional");
+        $contact->setAboutMe("Un poco sobre mi!");
+        $manager->persist($contact);
+
+        $contact = new Contact();
+        $contact->setCreatedAt(new \DateTime());
+        $contact->setName("Manuel Martinez");
+        $contact->setEmail("m.martinez@neosistec.com");
+        $contact->setPhone("611000000");
+        $contact->setType("Profesional");
+        $contact->setAboutMe("Un poco sobre mi!");
+        $manager->persist($contact);
+
+        $contact = new Contact();
+        $contact->setCreatedAt(new \DateTime());
+        $contact->setName("Carlos Lopez");
+        $contact->setEmail("c.lopez@neosistec.com");
+        $contact->setPhone("612000000");
         $contact->setType("Profesional");
         $contact->setAboutMe("Un poco sobre mi!");
         $manager->persist($contact);
@@ -36,18 +54,18 @@ class FixtureLoader implements FixtureInterface
 
         $manager->flush();
 
-        $contact = $manager->getRepository('PizzaNightManagementBundle:Contact')->findOneBy(array());
+        $contacts = $manager->getRepository('PizzaNightManagementBundle:Contact')->findAll();
         $event = $manager->getRepository('PizzaNightManagementBundle:Event')->findOneBy(array());
 
-        $attendee = new Attendee();
-        $attendee->setContact($contact);
-        //$attendee->setContactId($contact->getId());
-        $attendee->setEvent($event);
-        //$attendee->setEventId($event->getId());
-        $attendee->setDate(new \DateTime());
-        $attendee->setStatus(Attendee::STATUS_REGISTERED);
-        $attendee->setSlug(substr(md5($contact->getEmail()), 0, 20));
-        $manager->persist($attendee);
+        foreach ($contacts as $contact) {
+            $attendee = new Attendee();
+            $attendee->setContact($contact);
+            $attendee->setEvent($event);
+            $attendee->setDate(new \DateTime());
+            $attendee->setStatus(Attendee::STATUS_REGISTERED);
+            $attendee->setSlug(substr(md5($contact->getEmail()), 0, 20));
+            $manager->persist($attendee);
+        }
 
         $manager->flush();
     }

@@ -14,7 +14,7 @@
 
         <div>
             <h2>Aforo m&aacute;ximo:</h2>
-            <div class="float-right"><h2>{{ attendees }}/{{ event.maxpeople }}</h2></div>
+            <div class="float-right"><h2>{{ registered|length }}&nbsp;-&nbsp;{{ attendees }}/{{ event.maxpeople }}</h2></div>
         </div>
     </div>
 
@@ -24,13 +24,13 @@
         <div class="attendee attendee_{{ attendee.contactid }}">
             <div class="attendee-status">
                 {% if(attendee.status==0) %}
-                    <img src="{{ asset("bundles/pizzanightmanagement/images/icon4.gif") }}" align="top" />
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icons/square_unknown.png") }}" align="top" />
                 {% elseif(attendee.status==1) %}
-                    <img src="{{ asset("bundles/pizzanightmanagement/images/icon_status_green.png") }}" align="top" />
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icons/square_valid.png") }}" align="top" />
                 {% elseif(attendee.status==2) %}
-                    <img src="{{ asset("bundles/pizzanightmanagement/images/icon_status_red.gif") }}" align="top" />
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icons/square_invalid.png") }}" align="top" />
                 {% else %}
-                    <img src="{{ asset("bundles/pizzanightmanagement/images/small_k_icon.jpg") }}" align="top" />
+                    <img src="{{ asset("bundles/pizzanightmanagement/images/icons/square_unknown.png") }}" align="top" />
                 {% endif %}
             </div>
             <div class="attendee-actions">
@@ -44,8 +44,10 @@
                     <a href="{{ path('_validate_attendee', {"event_id": attendee.eventid, "contact_id": attendee.contactid}) }}"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/validate_icon.png") }}" alt="Validar" /></a>
                 {% endif %}
             </div>
-            <div class="attendee-name"><b>{{ attendee.contact.name }}</b> &lt;{{ attendee.contact.email }}&gt;</div>
+            {#<div class="attendee-name"><b>{{ attendee.contact.name }}</b> &lt;{{ attendee.contact.email }}&gt;</div>#}
+            <div class="attendee-name"><b>{{ attendee.contact.name }}</b>&nbsp;<small>&lt;{{ attendee.contact.email }}&gt; | {{ attendee.contact.phone }}</small></div>
             <div class="attendee-moreinfo hidden">
+                {# @TODO Add more info #}
                 More info
             </div>
         </div>

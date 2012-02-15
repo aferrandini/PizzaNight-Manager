@@ -16,10 +16,10 @@
                 {{ event.name }}
                 <aside class="actions">
                     {% if event.date|date('U')<"now" %}
-                        <a href="{{ path('_import_registered', {"id": event.id}) }}" title="Importar registrados"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/import_icon.png') }}" alt="Importar registrados"/></a>
-                        <a href="{{ path('_registered', {"id": event.id}) }}" title="Listado de registrados"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/registered_icon.png') }}" alt="Listado de registrados"/></a>
+                        {#<a href="{{ path('_import_registered', {"id": event.id}) }}" title="Importar registrados"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/import_icon.png') }}" alt="Importar registrados"/></a>#}
+                        <a href="{{ path('_registered', {"id": event.id}) }}" title="Listado de registrados"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/attendees_icon.png') }}" alt="Listado de registrados"/></a>
                     {% endif %}
-                    <a href="{{ path('_attendees', {"id": event.id}) }}" title="Listado de asistentes"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/attendees_icon.png') }}" alt="Listado de asistentes"/></a>
+                    <a href="{{ path('_attendees', {"id": event.id}) }}" title="Listado de asistentes"><img src="{{ asset('bundles/pizzanightmanagement/images/icons/calendar_icon.png') }}" alt="Listado de asistentes"/></a>
                 </aside>
             </section>
         </section>

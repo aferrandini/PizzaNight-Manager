@@ -1,18 +1,33 @@
 {% extends "PizzaNightManagementBundle::layout.html.twig" %}
 
 {% block content %}
+    <div class="evento">
+        <div>
+            <h2>Evento:</h2>
+            <div class="float-right"><h2>{{ event.name }}</h2></div>
+        </div>
+
+        <div>
+            <h2>Fecha:</h2>
+            <div class="float-right"><h2>{{ event.date|date('d/m/Y H:i') }}</h2></div>
+        </div>
+    </div>
+
     <h1>Listado de asistentes</h1>
 
     {% for attendee in attendees %}
         <div class="attendee">
-            <div class="float-right">{{ attendee.contact.email }} / {{ attendee.contact.phone }}</div>
-            <div><b>{{ attendee.contact.name }}</b></div>
+            <div class="attendee-name"><b>{{ attendee.contact.name }}</b>&nbsp;<small>&lt;{{ attendee.contact.email }}&gt; | {{ attendee.contact.phone }}</small></div>
         </div>
     {% else %}
         No hay asistentes
     {% endfor %}
 
     <div align="right">
+        <div class="float-left">
+            <button class="symfony-button-green" onclick="javascript:document.location='{{ path("_events") }}'">Exportar a excel</button>
+        </div>
+
         <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_events") }}'">Listado de eventos</button>
         <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_registered", {"id": event.id}) }}'">Gestionar asistentes</button>
     </div>

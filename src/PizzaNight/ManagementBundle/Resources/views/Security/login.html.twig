@@ -8,16 +8,16 @@
     <form action="{{ path('login_check') }}" method="post">
         <div id="login-form">
             <div class="symfony-form-row">
-                <label for="username">Username:</label>
+                <label for="username">Usuario:</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" />
             </div>
 
             <div class="symfony-form-row">
-                <label for="password">Password:</label>
+                <label for="password">Contrase&ntilde;a:</label>
                 <input type="password" id="password" name="_password" />
             </div>
 
-            <input type="submit" name="login"  class="symfony-button-dark-grey" />
+            <input type="submit" name="login"  class="symfony-button-dark-grey" value="Entrar" />
         </div>
     </form>
 {% endblock content %}

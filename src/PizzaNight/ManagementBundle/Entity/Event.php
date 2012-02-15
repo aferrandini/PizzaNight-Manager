@@ -124,4 +124,5 @@ class Event
     {
         return $this->url;
     }
+
 }

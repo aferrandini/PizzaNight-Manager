@@ -3,7 +3,7 @@
 namespace PizzaNight\ManagementBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
-
+use PizzaNight\ManagementBundle\Entity\Attendee;
 /**
  * AttendeeRepository
  *
@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class AttendeeRepository extends EntityRepository
 {
+    public function findEventAttendees(\PizzaNight\ManagementBundle\Entity\Event $event)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->where('a.event_id=:event_id AND a.status=:status')
+            ->setParameter('event_id', $event->getId())
+            ->setParameter('status', Attendee::STATUS_ACCEPTED)
+            ->getQuery();
+
+        return $query->getResult();
+    }
 }

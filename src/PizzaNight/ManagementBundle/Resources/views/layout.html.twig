@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="{{ asset('bundles/pizzanightmanagement/css/main.css') }}" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('bundles/pizzanightmanagement/css/pizzanight_theme/jquery-ui-1.8.17.custom.css') }}" type="text/css" media="all" />
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
     <title>Pizza Night {% block subtitle %}{% endblock %}</title>
     <script type="text/javascript" src="{{ asset('bundles/pizzanightmanagement/js/jquery-1.7.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bundles/pizzanightmanagement/js/jquery-ui-1.8.17.custom.min.js') }}"></script>
@@ -20,6 +20,7 @@
         <button onclick="javascript:document.location='{{ path('_events') }}'">Inicio</button>
         {% if app.user %}
             <button onclick="javascript:document.location='{{ path('_events') }}'">Eventos</button>
+        <button onclick="javascript:document.location='{{ path('_events') }}'">Contactos</button>
             <button class="float-right" onclick="javascript:document.location='{{ path('logout') }}'">Salir</button>
         {% endif %}
     </nav>

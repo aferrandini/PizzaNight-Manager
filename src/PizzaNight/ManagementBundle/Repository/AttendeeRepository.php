@@ -32,7 +32,9 @@ class AttendeeRepository extends EntityRepository
             ->getQuery()
             ->getResult();
 
-        if(count($attendees)>0) {
+        if(count($attendees)==1) {
+            return $attendees[0]->getSlug();
+        } elseif(count($attendees)>1) {
             return $attendees[mt_rand(0, count($attendees))-1]->getSlug();
         } else {
             return 'no attendees';

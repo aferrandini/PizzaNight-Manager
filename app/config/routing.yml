@@ -3,6 +3,16 @@ PizzaNightManagementBundle:
     type:     annotation
     prefix:   /
 
+PizzaNightWebServiceBundle:
+    resource: "@PizzaNightWebServiceBundle/Controller"
+    type:     annotation
+    prefix:   /api
+
+PizzaNightIntranetBundle:
+    resource: "@PizzaNightIntranetBundle/Controller"
+    type:     annotation
+    prefix:   /intranet
+
 login_check:
     pattern:    /login_check
 

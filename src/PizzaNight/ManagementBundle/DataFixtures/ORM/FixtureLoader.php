@@ -18,6 +18,7 @@ class FixtureLoader implements FixtureInterface
      */
     function load(ObjectManager $manager)
     {
+        /*
         $contact = new Contact();
         $contact->setCreatedAt(new \DateTime());
         $contact->setName("Pedro Perez");
@@ -44,11 +45,12 @@ class FixtureLoader implements FixtureInterface
         $contact->setType("Profesional");
         $contact->setAboutMe("Un poco sobre mi!");
         $manager->persist($contact);
+        */
 
         $event = new Event();
         $event->setName("22-Feb");
         $event->setUrl("http://pizzanight.neosistec.com");
-        $event->setDate(new \DateTime());
+        $event->setDate(new \DateTime('2012-02-22 19:00:00', new \DateTimeZone('Europe/Madrid')));
         $event->setMaxPeople(25);
         $manager->persist($event);
 

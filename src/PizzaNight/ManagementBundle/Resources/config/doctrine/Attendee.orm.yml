@@ -9,6 +9,13 @@ PizzaNight\ManagementBundle\Entity\Attendee:
     contact_id:
       type: integer
       id: true
+    why:
+      type: text
+      nullable: true
+    pizza:
+      type: string
+      length: 30
+      nullable: true
     date:
       type: datetime
     slug:

@@ -230,4 +230,54 @@ class Attendee
 
         $this->setSlug(substr($slug, 5, 20));
     }
+    /**
+     * @var text $why
+     */
+    private $why;
+
+
+    /**
+     * Set why
+     *
+     * @param text $why
+     */
+    public function setWhy($why)
+    {
+        $this->why = $why;
+    }
+
+    /**
+     * Get why
+     *
+     * @return text 
+     */
+    public function getWhy()
+    {
+        return $this->why;
+    }
+    /**
+     * @var string $pizza
+     */
+    private $pizza;
+
+
+    /**
+     * Set pizza
+     *
+     * @param string $pizza
+     */
+    public function setPizza($pizza)
+    {
+        $this->pizza = $pizza;
+    }
+
+    /**
+     * Get pizza
+     *
+     * @return string 
+     */
+    public function getPizza()
+    {
+        return $this->pizza;
+    }
 }

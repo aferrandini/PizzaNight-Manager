@@ -21,6 +21,8 @@ security:
                 path:   logout
 
     access_control:
+        - { path: ^/intranet/whois/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/(_(profiler|wdt)|css|images|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_ADMIN }

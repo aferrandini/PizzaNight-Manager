@@ -107,6 +107,8 @@ class RegisteredPeopleImport
                 $attendee->setContact($contact);
                 $attendee->setDate(new \DateTime());
                 $attendee->setStatus(Attendee::STATUS_REGISTERED);
+                $attendee->setWhy($this->getCellValue($activeSheet, 'J'.$row));
+                $attendee->setPizza($this->getCellValue($activeSheet, 'I'.$row));
                 $attendee->setSlug('slug');
 
                 $attendees[] = $attendee;

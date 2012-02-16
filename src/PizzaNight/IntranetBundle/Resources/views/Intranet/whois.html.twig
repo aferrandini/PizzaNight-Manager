@@ -1,0 +1,28 @@
+{% extends "PizzaNightIntranetBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="float-right"><img src="{{ attendee.contact.gravatarurl }}" class="ui-corner-all" /></div>
+
+    <h1 class="centered">PizzaNight os presenta a...</h1>
+    <h1 class="centered">{{ attendee.contact.name }}</h1>
+
+    <div class="clear_fix"></div>
+    <div class="about-me float-left">
+        <h2>Algo sobre mí...</h2>
+        <p>{{ attendee.contact.aboutme }}</p>
+    </div>
+
+    <div class="porque-pizzanight float-right padding-top-130">
+        <h2>Por qué PizzaNight...?</h2>
+        <p>"{{ attendee.why }}..."</p>
+    </div>
+
+    <div class="pizza-favorita float-left padding-top-130">
+        <h2>Mi pizza favorita...</h2>
+        <p>{{ attendee.pizza }}</p>
+    </div>
+
+    <script type="text/javascript">
+
+    </script>
+{% endblock content %}

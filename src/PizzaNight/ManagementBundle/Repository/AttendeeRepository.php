@@ -22,4 +22,20 @@ class AttendeeRepository extends EntityRepository
 
         return $query->getResult();
     }
+
+    public function findNextSlug($event_id)
+    {
+        $attendees = $this->createQueryBuilder('a')
+            ->where('a.event_id=:event_id AND a.status=:status')
+            ->setParameter('event_id', $event_id)
+            ->setParameter('status', Attendee::STATUS_IN_THE_EVENT)
+            ->getQuery()
+            ->getResult();
+
+        if(count($attendees)>0) {
+            return $attendees[mt_rand(0, count($attendees))-1]->getSlug();
+        } else {
+            return 'no attendees';
+        }
+    }
 }

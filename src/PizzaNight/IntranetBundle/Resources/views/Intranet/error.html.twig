@@ -1,0 +1,19 @@
+{% extends "PizzaNightIntranetBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="error">
+        <h1 class="centered">Opss! {% block mensaje %}Ha ocurrido un error!{% endblock %}</h1>
+
+        <div id="error-div">
+            <h2>En caso de error:</h2>
+
+            <ol>
+               <li>Comprobar que no se han llevado la Pizza!</li>
+               <li>Intenta no perder la calma!</li>
+               <li>Se la han llevado???!!!</li>
+               <li>Estamos perdidos... :-(</li>
+            </ol>
+        </div>
+    </div>
+{% endblock %}
+

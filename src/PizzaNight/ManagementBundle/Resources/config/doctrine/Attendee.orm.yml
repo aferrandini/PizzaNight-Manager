@@ -28,4 +28,5 @@ PizzaNight\ManagementBundle\Entity\Attendee:
       targetEntity: Contact
       cascade:  {}
       mappedBy: id
-  lifecycleCallbacks: {  }
+  lifecycleCallbacks:
+      prePersist: [ generateSlug ]

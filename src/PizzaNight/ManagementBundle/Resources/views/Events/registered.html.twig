@@ -20,6 +20,10 @@
 
     <h1>Listado de personas registradas</h1>
 
+    <div align="right">
+        <button class="symfony-button-dark-grey" onclick="javascript:confirmValidateAll()">Validar a todos</button>
+        <button class="symfony-button-dark-grey-red" onclick="javascript:confirmRejectAll()">Rechazar a todos</button>
+    </div>
     {% for attendee in registered %}
         <div class="attendee attendee_{{ attendee.contactid }}">
             <div class="attendee-status">
@@ -64,6 +68,20 @@
         function showMoreInfo(id)
         {
             $('.attendee_'+id+' > .attendee-moreinfo').toggle();
+        }
+
+        function confirmValidateAll()
+        {
+            if(confirm('Realmente desea validar a todos los registrados?')) {
+                document.location='{{ path('_validate_attendee', {"event_id": event.id, "contact_id": "all"}) }}';
+            }
+        }
+
+        function confirmRejectAll()
+        {
+            if(confirm('Realmente desea rechazar a todos los registrados?')) {
+                document.location='{{ path('_reject_attendee', {"event_id": event.id, "contact_id": "all"}) }}';
+            }
         }
     </script>
 {% endblock content %}

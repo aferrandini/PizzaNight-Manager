@@ -72,3 +72,4 @@
 [PHPExcel]
     git=https://github.com/aferrandini/PHPExcel.git
     target=/phpexcel
+    version=v1.7.6

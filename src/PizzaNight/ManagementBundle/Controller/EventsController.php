@@ -78,14 +78,23 @@ class EventsController extends Controller
      */
     public function validateAttendeeAction($event_id, $contact_id)
     {
-        $attendee = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findOneBy(array('event_id' => $event_id, 'contact_id' => $contact_id));
-        if($attendee instanceof Attendee) {
-            $attendee->setStatus(Attendee::STATUS_ACCEPTED);
+        $em = $this->getDoctrine()->getEntityManager();
 
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($attendee);
-            $em->flush();
+        if($contact_id==='all') {
+            $attendees = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findBy(array('event_id' => $event_id));
+            foreach($attendees as $attendee) {
+                $attendee->setStatus(Attendee::STATUS_ACCEPTED);
+                $em->persist($attendee);
+            }
+        } else {
+            $attendee = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findOneBy(array('event_id' => $event_id, 'contact_id' => $contact_id));
+            if($attendee instanceof Attendee) {
+                $attendee->setStatus(Attendee::STATUS_ACCEPTED);
+                $em->persist($attendee);
+            }
         }
+
+        $em->flush();
 
         return $this->redirect($this->generateUrl('_registered', array(
             'id' => $event_id
@@ -97,14 +106,23 @@ class EventsController extends Controller
      */
     public function rejectAttendeeAction($event_id, $contact_id)
     {
-        $attendee = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findOneBy(array('event_id' => $event_id, 'contact_id' => $contact_id));
-        if($attendee instanceof Attendee) {
-            $attendee->setStatus(Attendee::STATUS_REJECTED);
+        $em = $this->getDoctrine()->getEntityManager();
 
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($attendee);
-            $em->flush();
+        if($contact_id==='all') {
+            $attendees = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findBy(array('event_id' => $event_id));
+            foreach($attendees as $attendee) {
+                $attendee->setStatus(Attendee::STATUS_REJECTED);
+                $em->persist($attendee);
+            }
+        } else {
+            $attendee = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findOneBy(array('event_id' => $event_id, 'contact_id' => $contact_id));
+            if($attendee instanceof Attendee) {
+                $attendee->setStatus(Attendee::STATUS_REJECTED);
+                $em->persist($attendee);
+            }
         }
+
+        $em->flush();
 
         return $this->redirect($this->generateUrl('_registered', array(
             'id' => $event_id

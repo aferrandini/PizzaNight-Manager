@@ -3,3 +3,4 @@
 /app/cache
 /web/bundles
 /vendor
+*.php~

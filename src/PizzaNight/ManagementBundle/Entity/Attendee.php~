@@ -220,4 +220,14 @@ class Attendee
     {
         return $this->contact;
     }
+
+    /**
+     * @ORM\prePersist
+     */
+    public function generateSlug()
+    {
+        $slug = md5($this->getEventId() . ':' . $this->getContactId() . ':' . mt_rand(5000, 9999) . ':' . microtime(false));
+
+        $this->setSlug(substr($slug, 5, 20));
+    }
 }

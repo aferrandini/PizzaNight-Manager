@@ -34,25 +34,10 @@ class ImportRegisteredPeopleCommand extends ContainerAwareCommand
         $event_id = $input->getArgument('event_id');
         $filename = $input->getArgument('filename');
 
-        // Check the event_id exists
-        if(is_numeric($event_id) && $event_id>0) {
-            $event = $this->getContainer()->get('doctrine')->getRepository('PizzaNightManagementBundle:Event')->find($event_id);
-        } else {
-            $event = null;
-        }
+        $dialog = $this->getHelperSet()->get('dialog');
+        $importer = $this->getContainer()->get('pizza_night_management.people_importer');
 
-        if($event instanceof Event) {
-            if(file_exists($filename)) {
-                $output->writeln('PizzaNighters registered:');
-                $output->writeln('----------------------------------------');
-
-                
-            } else {
-                throw new \InvalidArgumentException('Please introduce a valid Excel file');
-            }
-        } else {
-            throw new \InvalidArgumentException('Please introduce a valid event_id');
-        }
+        $importer->importFile($output, $filename, $event_id, $dialog);
 
         $output->writeln("");
     }

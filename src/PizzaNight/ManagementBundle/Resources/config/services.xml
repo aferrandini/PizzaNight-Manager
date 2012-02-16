@@ -17,4 +17,14 @@
         </service>
     </services>
     -->
+
+    <parameters>
+        <parameter key="pizza_night_management.registered_people_import.class">PizzaNight\ManagementBundle\Lib\RegisteredPeopleImport</parameter>
+    </parameters>
+
+    <services>
+        <service id="pizza_night_management.people_importer" class="%pizza_night_management.registered_people_import.class%">
+            <argument type="service" id="doctrine" />
+        </service>
+    </services>
 </container>

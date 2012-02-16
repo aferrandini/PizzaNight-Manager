@@ -369,6 +369,7 @@ input[type=text], input[type=password]
 
 .symfony-button-grey,
 .symfony-button-dark-grey,
+.symfony-button-dark-grey-red,
 .symfony-button-green
 {
     font-size: 0.85em;
@@ -402,7 +403,8 @@ input[type=text], input[type=password]
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#444444');
 }
 
-.symfony-button-dark-grey
+.symfony-button-dark-grey,
+.symfony-button-dark-grey-red
 {
     color:       #ffffff;
     font-weight: normal;
@@ -413,6 +415,15 @@ input[type=text], input[type=password]
     background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#444444));
     background: -moz-linear-gradient(top,  #000000,  #444444);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#444444');
+}
+
+.symfony-button-dark-grey-red:hover
+{
+    color: #ffffff;
+
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#440000));
+    background: -moz-linear-gradient(top,  #ff0000,  #440000);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#440000');
 }
 
 .symfony-button-dark-grey:hover
@@ -538,7 +549,7 @@ div.attendee
     -moz-border-radius:         5px;
     -webkit-border-radius:      5px;
     border-radius:              5px;
-    margin-bottom: 10px;
+    margin: 5px 0px;
 }
 
 div.attendee:hover

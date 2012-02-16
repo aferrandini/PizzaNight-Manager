@@ -3,4 +3,6 @@
 /app/cache
 /web/bundles
 /vendor
+/qrcodes
+!/qrcodes/README
 *.php~

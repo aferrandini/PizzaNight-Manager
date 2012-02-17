@@ -63,6 +63,54 @@ class EventsController extends Controller
     }
 
     /**
+     * @Route("/{id}/attendees/export", name="_attendees_export")
+     * @Template()
+     */
+    public function attendeesExportAction($id)
+    {
+        $event = $this->getDoctrine()
+            ->getRepository('PizzaNightManagementBundle:Event')
+            ->find($id);
+
+        $attendees = $this->getDoctrine()
+            ->getRepository('PizzaNightManagementBundle:Attendee')
+            ->findEventAttendees($event);
+
+        //Abrimos la plantilla excel para el informe seleccionado
+        $reader = new \PHPExcel_Reader_Excel2007();
+        $excel = $reader->load($this->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'PizzaNightTemplate.xlsx');
+        $excel->setActiveSheetIndex(0);
+
+        $row = 3;
+        foreach ($attendees as $attendee) {
+            $coll = 'A';
+            $excel->getActiveSheet()->setCellValue($coll.$row, $attendee->getContact()->getName());$coll++;
+            $excel->getActiveSheet()->setCellValue($coll.$row, $attendee->getContact()->getEmail());$coll++;
+            $excel->getActiveSheet()->setCellValue($coll.$row, $attendee->getContact()->getPhone());$coll++;
+
+            $row++;
+        }
+
+        $tmp_filename = $this->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'tmp' . DIRECTORY_SEPARATOR . time() . '.xlsx';
+
+        $output = new \PHPExcel_Writer_Excel5($excel);
+        $output->save($tmp_filename);
+
+        $stream = file_get_contents($tmp_filename);
+        @unlink($tmp_filename);
+
+        //Establecemos las cabeceras
+        $response = new Response();
+        $response->headers->set('Pragma', '');
+        $response->headers->set('Cache-Control', '');
+        $response->headers->set('Content-Type', 'application/ms-excel');
+        $response->headers->set('Content-Disposition', 'attachment; filename="' . $event->getName() . '.xls"');
+        $response->setContent($stream);
+
+        return $response;
+    }
+
+    /**
      * @Route("/{id}/{id_attendee}/attendee/info", name="_attendee_info")
      * @Template()
      */

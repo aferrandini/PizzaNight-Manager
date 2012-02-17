@@ -5,4 +5,6 @@
 /vendor
 /qrcodes
 !/qrcodes/README
+/tmp
+!/tmp/README
 *.php~

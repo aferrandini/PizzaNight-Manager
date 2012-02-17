@@ -25,7 +25,7 @@
 
     <div align="right">
         <div class="float-left">
-            <button class="symfony-button-green" onclick="javascript:document.location='{{ path("_events") }}'">Exportar a excel</button>
+            <button class="symfony-button-green" onclick="javascript:document.location='{{ path("_attendees_export", {"id": event.id}) }}'">Exportar a excel</button>
         </div>
 
         <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_events") }}'">Listado de eventos</button>

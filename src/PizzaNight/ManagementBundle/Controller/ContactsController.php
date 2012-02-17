@@ -64,13 +64,26 @@ class ContactsController extends Controller
     }
 
     /**
-     * @Route("/{id}/delete", name="_contacts_delete")
-     * @Template()
+     * @Route("/contacts/delete/{id}", name="_contacts_delete")
      */
     public function contactsDeleteAction($id)
     {
-        // Your code goes here
+        $em = $this->getDoctrine()->getEntityManager();
 
-        return array();
+        $attendees = $this->getDoctrine()
+            ->getRepository('PizzaNightManagementBundle:Attendee')
+            ->findBy(array('contact_id' => $id));
+        foreach($attendees as $attendee) {
+            $em->remove($attendee);
+        }
+
+        $contact = $this->getDoctrine()
+            ->getRepository('PizzaNightManagementBundle:Contact')
+            ->find($id);
+        $em->remove($contact);
+
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('_contacts'));
     }
 }

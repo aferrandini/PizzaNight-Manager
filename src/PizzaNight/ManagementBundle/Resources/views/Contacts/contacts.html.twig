@@ -10,7 +10,7 @@
         <div class="attendee attendee_{{ contact.id }}">
             <div class="attendee-actions">
                 <a href="{{ path('_contacts_edit', {"id": contact.id}) }}" title="Editar contacto"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/contact_icon.png") }}" alt="Editar contacto" /></a>
-                <a href="{{ path('_contacts_delete', {"id": contact.id}) }}" title="Eliminar contacto"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/reject_icon.png") }}" alt="Eliminar contacto" /></a>
+                <a href="javascript:void(0)" onclick="javascript:if(confirm('Estás seguro que quieres eliminar el contacto?')) { document.location='{{ path('_contacts_delete', {"id": contact.id}) }}'; }" title="Eliminar contacto"><img src="{{ asset("bundles/pizzanightmanagement/images/icons/reject_icon.png") }}" alt="Eliminar contacto" /></a>
             </div>
             <div class="attendee-name"><b>{{ contact.name }}</b>&nbsp;<small>&lt;{{ contact.email }}&gt; | {{ contact.phone }}</small></div>
             <div class="attendee-moreinfo hidden">

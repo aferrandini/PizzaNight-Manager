@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContactRepository extends EntityRepository
 {
+    public function findAllForAdminList($order_by_column='', $order_by_type='ASC') {
+        $query = $this->createQueryBuilder('a');
+
+        if($order_by_column!='') {
+            $query->orderBy('a.' . $order_by_column, $order_by_type);
+        } else {
+            $query->orderBy('a.name', 'ASC');
+        }
+
+        return $query->getQuery()->getResult();
+    }
 }

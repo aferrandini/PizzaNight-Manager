@@ -1,0 +1,24 @@
+{% extends "PizzaNightManagementBundle::layout.html.twig" %}
+{% form_theme form "PizzaNightManagementBundle:Form:form_div_layout.html.twig" %}
+
+{% block subtitle %} - Editar contacto{% endblock %}
+
+{% block content %}
+    <h1>Editar contacto</h1>
+
+    <section>
+        <form action="{{ path('_contacts_edit', {"id": contact.id}) }}" method="post">
+            {{ form_errors(form) }}
+
+            {{ form_row(form.name) }}
+
+            {{ form_row(form.email) }}
+
+            {{ form_row(form.phone) }}
+
+            {{ form_rest(form) }}
+            <button class="symfony-button-dark-grey" type="submit">Guardar</button>
+            <button class="symfony-button-dark-grey" type="button" onclick="javascript:document.location='{{ path("_contacts") }}'">Cancelar</button>
+        </form>
+    </section>
+{% endblock content %}

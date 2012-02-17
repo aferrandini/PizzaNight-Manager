@@ -157,6 +157,19 @@ section.no-data {
     color: #444444;
 }
 
+section.contact {
+    position: relative;
+    margin-top: 20px;
+}
+
+section.contact-name {
+    border: 1px solid #777777;
+    -moz-border-radius:         5px;
+    -webkit-border-radius:      5px;
+    border-radius:              5px;
+    padding: 5px 10px;
+}
+
 section.event {
     position: relative;
     margin-top: 20px;

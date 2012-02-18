@@ -174,4 +174,9 @@ class Contact
     {
         return $this->created_at;
     }
+
+    public function getGravatarUrl()
+    {
+        echo "http://www.gravatar.com/avatar/" . md5(strtolower(trim($this->getEmail()))) . "?s=150";
+    }
 }

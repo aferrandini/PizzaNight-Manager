@@ -23,21 +23,58 @@ class AttendeeRepository extends EntityRepository
         return $query->getResult();
     }
 
-    public function findNextSlug($event_id)
+    public function findNextSlug($event_id, $last_slug='')
+    {
+        $less_hits = $this->findLessHits($event_id);
+
+        $where = 'a.event_id=:event_id AND a.status=:status AND a.hits=:hits';
+
+        $parameters = array(
+            'event_id' => $event_id,
+            'status' => Attendee::STATUS_IN_THE_EVENT,
+            'hits' => $less_hits
+        );
+
+        if($last_slug!='') {
+            $where .= ' AND a.slug!=:last_slug';
+            $parameters['last_slug'] = $last_slug;
+        }
+
+        $attendees = $this->createQueryBuilder('a')
+            ->where($where)
+            ->setParameters($parameters)
+            ->getQuery()
+            ->getResult();
+
+        if(count($attendees)>0) {
+            shuffle($attendees);
+
+            foreach($attendees as $attendee) {
+                return $attendee->getSlug();
+            }
+        } else {
+            return 'random';
+        }
+    }
+
+    public function findLessHits($event_id)
     {
         $attendees = $this->createQueryBuilder('a')
             ->where('a.event_id=:event_id AND a.status=:status')
             ->setParameter('event_id', $event_id)
             ->setParameter('status', Attendee::STATUS_IN_THE_EVENT)
+            ->orderBy('a.hits', 'ASC')
+            ->setMaxResults(1)
             ->getQuery()
             ->getResult();
 
-        if(count($attendees)==1) {
-            return $attendees[0]->getSlug();
-        } elseif(count($attendees)>1) {
-            return $attendees[mt_rand(0, count($attendees))-1]->getSlug();
+        if(count($attendees)) {
+            foreach ($attendees as $attendee) {
+                return $attendee->getHits();
+            }
+
         } else {
-            return 'no attendees';
+            return 0;
         }
     }
 }

@@ -26,6 +26,9 @@ PizzaNight\ManagementBundle\Entity\Attendee:
     register_date:
       type: datetime
       nullable: true
+    hits:
+      type: smallint
+      default: 0
   manyToOne:
     event:
       targetEntity: Event

@@ -280,4 +280,29 @@ class Attendee
     {
         return $this->pizza;
     }
+    /**
+     * @var smallint $hits
+     */
+    private $hits;
+
+
+    /**
+     * Set hits
+     *
+     * @param smallint $hits
+     */
+    public function setHits($hits)
+    {
+        $this->hits = $hits;
+    }
+
+    /**
+     * Get hits
+     *
+     * @return smallint 
+     */
+    public function getHits()
+    {
+        return $this->hits;
+    }
 }

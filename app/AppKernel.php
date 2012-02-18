@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new PizzaNight\IntranetBundle\PizzaNightIntranetBundle(),
             new PizzaNight\ManagementBundle\PizzaNightManagementBundle(),
             new PizzaNight\WebServiceBundle\PizzaNightWebServiceBundle(),
+            new PizzaNight\AsistenteBundle\PizzaNightAsistenteBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

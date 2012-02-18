@@ -21,8 +21,15 @@
         <h2>Mi pizza favorita...</h2>
         <p>{{ attendee.pizza }}</p>
     </div>
-
-    <script type="text/javascript">
-
-    </script>
 {% endblock content %}
+
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function() {
+                $('.symfony-content').html('<div align="center"><h1>Buscando Pizza Nighter...</h1></div>');
+                document.location='{{ path('_intranet_whois', {"event_id": attendee.eventid, "slug": "new"}) }}';
+            }, 20000);
+        });
+    </script>
+{% endblock javascript %}

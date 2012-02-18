@@ -4,6 +4,7 @@
 /web/bundles
 /vendor
 /qrcodes
+/app/spool
 !/qrcodes/README
 /tmp
 !/tmp/README

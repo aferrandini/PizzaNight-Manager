@@ -1,3 +1,8 @@
+PizzaNightAsistenteBundle:
+    resource: "@PizzaNightAsistenteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 PizzaNightManagementBundle:
     resource: "@PizzaNightManagementBundle/Controller"
     type:     annotation

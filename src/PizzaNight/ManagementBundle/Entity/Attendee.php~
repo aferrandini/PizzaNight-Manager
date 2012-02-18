@@ -255,4 +255,29 @@ class Attendee
     {
         return $this->why;
     }
+    /**
+     * @var string $pizza
+     */
+    private $pizza;
+
+
+    /**
+     * Set pizza
+     *
+     * @param string $pizza
+     */
+    public function setPizza($pizza)
+    {
+        $this->pizza = $pizza;
+    }
+
+    /**
+     * Get pizza
+     *
+     * @return string 
+     */
+    public function getPizza()
+    {
+        return $this->pizza;
+    }
 }

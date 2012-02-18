@@ -1,0 +1,14 @@
+{% extends "PizzaNightManagementBundle:MailTemplates:layout.txt.twig" %}
+
+{% block content %}
+Enhorabuena {{ attendee.contact.name }}!
+
+Queremos darte la enhorabuena porque has sido seleccionado para asistir al primer PizzaNight lo que te convierte en un auténtico PizzaNighter!!!
+
+Por favor confirma tu asistencia mediante el siguiente enlace!
+
+  {{ host ~ path('_gestionar_asistencia', {"slug": attendee.slug}) }}
+
+Y recuerda que necesitas llevar el código que está en el email en el teléfono o impreso para poder entrar al PizzaNight!
+
+{% endblock %}

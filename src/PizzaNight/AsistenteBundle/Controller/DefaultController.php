@@ -22,10 +22,19 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{slug}", name="_gestionar_asistencia")
+     * @Route("/", name="_gestionar")
      * @Template()
      */
     public function indexAction($slug)
+    {
+        return $this->redirect($this->generateUrl('_error'));
+    }
+
+    /**
+     * @Route("/{slug}", name="_gestionar_asistencia")
+     * @Template()
+     */
+    public function asistenteAction($slug)
     {
         $attendee = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findOneBy(array('slug' => $slug));
 

@@ -1,1 +1,24 @@
-Hello {{ name }}!
+{% extends "PizzaNightAsistenteBundle::layout.html.twig" %}
+
+{% block content %}
+<h1>Hola {{ attendee.contact.name }}</h1>
+
+<div style="padding: 10px;">
+    Este es un espacio reservado para que puedas confirmar tu asistencia al evento.
+</div>
+
+<div class="evento">
+    <div class="attendee-name">
+        <h2>{{ attendee.event.name }} ~ {{ attendee.event.date|date('d/m/Y H:i') }}</h2>
+    </div>
+
+    <div align="center">
+        {% if(attendee.status==1 or attendee.status==4) %}
+        Haz click en el siguiente bot&oacute;n para confirmar tu asistencia<br/><br/>
+        <button class="symfony-button-dark-grey" type="button" onclick="javascript:document.location='{{ path('_confirmar_asistencia', {"slug": attendee.slug}) }}'">Confirmar asistencia</button>
+        {% elseif(attendee.status==1 or attendee.status==3) %}
+        Tu asistencia ha sido confirmada, si por alguna raz&oacute;n no puedes asistir haz click aqu&iacute;<br/><br/><a href="{{ path('_desconfirmar_asistencia', {"slug": attendee.slug}) }}">Lo siento, no podré asistir</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

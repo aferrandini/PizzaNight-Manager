@@ -16,7 +16,8 @@ class Attendee
     const STATUS_ACCEPTED     = 1;
     const STATUS_REJECTED     = 2;
     const STATUS_CONFIRMED    = 3;
-    const STATUS_IN_THE_EVENT = 4;
+    const STATUS_UNCONFIRMED  = 4;
+    const STATUS_IN_THE_EVENT = 5;
 
     /**
      * @var integer $event_id

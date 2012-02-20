@@ -22,15 +22,6 @@ class AsistenteController extends Controller
     }
 
     /**
-     * @Route("/", name="_gestionar")
-     * @Template()
-     */
-    public function indexAction($slug)
-    {
-        return $this->redirect($this->generateUrl('_error'));
-    }
-
-    /**
      * @Route("/{slug}", name="_gestionar_asistencia")
      * @Template()
      */

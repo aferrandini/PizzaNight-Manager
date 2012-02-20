@@ -10,7 +10,7 @@ use PizzaNight\ManagementBundle\Entity\Attendee;
 /**
  * @Route("/asistente")
  */
-class DefaultController extends Controller
+class AsistenteController extends Controller
 {
     /**
      * @Route("/error", name="_error")

@@ -1,4 +1,10 @@
 {% extends "PizzaNightManagementBundle:MailTemplates:layout.html.twig" %}
 
 {% block content %}
+<div style="padding:10px">{{ attendee.contact.name }}, gracias por suscribirte a Pizza Night.</div>
+
+<div style="padding:10px">Debido al elevado n&uacute;mero de peticiones registrado, no nos ha sido posible dar cabida a todas las suscripciones.</div>
+<div style="padding:10px">Lamentamos mucho no poder contar con tu asistencia, pero habr&aacute;n m&aacute;s eventos interesantes pr&oacute;ximamente en los que podr&aacute;s participar.</div>
+<div style="padding:10px">Sigue el evento y ent&eacute;rarte de los pr&oacute;ximos en <a href="http://www.twitter.com/neosistec">Twitter</a> y <a href="http://www.facebook.com/neosistec">Facebook</a>.</div>
+<br/>
 {% endblock %}

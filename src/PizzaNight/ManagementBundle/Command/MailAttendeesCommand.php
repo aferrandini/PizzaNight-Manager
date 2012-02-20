@@ -28,7 +28,7 @@ class MailAttendeesCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln('Emails generated');
+        $output->writeln('Accepted attendees');
         $output->writeln('----------------------------------------');
 
         $attendees = $this->getContainer()->get('doctrine')
@@ -53,6 +53,7 @@ class MailAttendeesCommand extends ContainerAwareCommand
                 $message->setSubject('Ya eres un Pizza Nighter!')
                     ->setFrom('pizzanight@neosistec.com')
                     ->setTo($attendee->getContact()->getEmail())
+                    ->setBcc("aferrandini.neosistec@gmail.com")
                     ->setBody($twig->render('PizzaNightManagementBundle:MailTemplates:Accepted/confirmation.html.twig', array(
                         'attendee' => $attendee,
                         'host' => $host,
@@ -73,6 +74,10 @@ class MailAttendeesCommand extends ContainerAwareCommand
             $output->writeln('No se encontraron asistentes al evento.');
         }
 
+        $output->writeln('');
+        $output->writeln('Rejected attendees');
+        $output->writeln('----------------------------------------');
+
         $attendees = $this->getContainer()->get('doctrine')
             ->getRepository('PizzaNightManagementBundle:Attendee')
             ->findBy(array(
@@ -90,23 +95,22 @@ class MailAttendeesCommand extends ContainerAwareCommand
             foreach ($attendees as $attendee) {
                 $output->writeln($attendee->getContact()->getName() . ' <' . $attendee->getContact()->getEmail() . '>');
 
-                $qrcode_path = $this->getContainer()->get('kernel')->getRootDir() . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'qrcodes' . DIRECTORY_SEPARATOR . $attendee->getSlug();
                 $message = \Swift_Message::newInstance();
-                $message->setSubject('Ya eres un Pizza Nighter!')
+                $message->setSubject('PizzaNight 22-Febrero!')
                     ->setFrom('pizzanight@neosistec.com')
                     ->setTo($attendee->getContact()->getEmail())
-                    ->setBody($twig->render('PizzaNightManagementBundle:MailTemplates:Accepted/confirmation.html.twig', array(
+                    ->setBcc("aferrandini.neosistec@gmail.com")
+                    ->setBody($twig->render('PizzaNightManagementBundle:MailTemplates:Rejected/sorry.html.twig', array(
                     'attendee' => $attendee,
                     'host' => $host,
                     'top_image' => $message->embed(\Swift_Image::fromPath($top_image_path)),
                     'bottom_image' => $message->embed(\Swift_Image::fromPath($bottom_image_path)),
                     'qrcode' => $message->embed(\Swift_Image::fromPath($qrcode_path)),
                 )), "text/html")
-                    ->addPart($twig->render('PizzaNightManagementBundle:MailTemplates:Accepted/confirmation.txt.twig', array(
+                    ->addPart($twig->render('PizzaNightManagementBundle:MailTemplates:Rejected/sorry.txt.twig', array(
                     'attendee' => $attendee,
                     'host' => $host,
                 )), "text/plain")
-                    ->attach(\Swift_Attachment::fromPath($qrcode_path)->setFilename('entrada.png'))
                 ;
 
                 $mailer->send($message);

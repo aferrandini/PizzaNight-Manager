@@ -3,11 +3,22 @@
 {% block content %}
 <h1>Enhorabuena {{ attendee.contact.name }}!</h1>
 
-<div style="padding:10px">Queremos darte la enhorabuena porque has sido seleccionado para asistir al primer PizzaNight
-lo que te convierte en un auténtico PizzaNighter!!!</div>
+<div style="padding:10px">Queremos darte la enhorabuena porque has sido seleccionado para asistir al primer PizzaNight lo que te convierte en un aut&eacute;ntico PizzaNighter!!!</div>
 <div style="padding:10px">Por favor confirma tu asistencia mediante el siguiente enlace!</div>
 <div style="padding:20px"><a class="pnight-link" href="{{ host ~ path('_gestionar_asistencia', {"slug": attendee.slug}) }}">{{ host ~ path('_gestionar_asistencia', {"slug": attendee.slug}) }}</a></div>
-<div style="padding: 10px">Y recuerda que necesitas llevar el código que está en el email en el teléfono o impreso para poder entrar al PizzaNight!</div>
+<div style="padding: 10px">Y recuerda que necesitas llevar el c&oacute;digo impreso, o en tu tel&eacute;fono para poder entrar al PizzaNight!</div>
 <div align="center" style="padding:20px"><img src="{{ qrcode }}" /></div>
+<div style="padding: 10px">Te esperamos a las 19.30h en:</div>
+<div style="padding: 10px">
+Neosistec<br/>
+Edificio Azor (Encima del Gallo Blues)<br/>
+Calle Central 10, 7ª planta<br/>
+30100, Espinardo, Murcia
+</div>
+<div style="padding: 10px">
+Contacto:<br/>
+pizzanight@neosistec.com<br/>
+968277415 - 627550950
+</div>
 <br/>
 {% endblock %}

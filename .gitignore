@@ -8,4 +8,5 @@
 !/qrcodes/README
 /tmp
 !/tmp/README
+/app/config/parameters.ini
 *.php~

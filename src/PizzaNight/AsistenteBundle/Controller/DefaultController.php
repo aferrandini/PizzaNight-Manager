@@ -15,7 +15,7 @@ class DefaultController extends Controller
      * @Route("/", name="_gestionar")
      * @Template()
      */
-    public function indexAction($slug)
+    public function indexAction()
     {
         return $this->redirect($this->generateUrl('_error'));
     }

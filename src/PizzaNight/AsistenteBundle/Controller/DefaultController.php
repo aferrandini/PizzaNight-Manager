@@ -13,6 +13,15 @@ use PizzaNight\ManagementBundle\Entity\Attendee;
 class DefaultController extends Controller
 {
     /**
+     * @Route("/error", name="_error")
+     * @Template()
+     */
+    public function errorAction()
+    {
+        return array();
+    }
+
+    /**
      * @Route("/{slug}", name="_gestionar_asistencia")
      * @Template()
      */
@@ -59,15 +68,6 @@ class DefaultController extends Controller
         }
 
         return $this->redirect($this->generateUrl('_gestionar_asistencia', array('slug' => $attendee->getSlug())));
-    }
-
-    /**
-     * @Route("/error", name="_error")
-     * @Template()
-     */
-    public function errorAction()
-    {
-        return array();
     }
 
     /**

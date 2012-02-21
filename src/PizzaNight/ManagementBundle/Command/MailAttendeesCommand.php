@@ -129,7 +129,6 @@ class MailAttendeesCommand extends ContainerAwareCommand
                         'host' => $host,
                         'top_image' => $message->embed(\Swift_Image::fromPath($top_image_path)),
                         'bottom_image' => $message->embed(\Swift_Image::fromPath($bottom_image_path)),
-                        'qrcode' => $message->embed(\Swift_Image::fromPath($qrcode_path)),
                     )), "text/html")
                         ->addPart($twig->render('PizzaNightManagementBundle:MailTemplates:Rejected/sorry.txt.twig', array(
                         'attendee' => $attendee,

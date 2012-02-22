@@ -51,4 +51,30 @@ class IntranetController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/sorteo/{event_id}", name="_sorteo")
+     * @Template()
+     */
+    public function sorteoAction($event_id)
+    {
+        return array('event_id' => $event_id);
+    }
+
+    /**
+     * @Route("/ganador", name="_ganador")
+     * @Template()
+     */
+    public function ganadorAction($event_id)
+    {
+        $attendees = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findBy(array('event_id' => $event_id, 'status' => Attendee::STATUS_IN_THE_EVENT));
+
+        shuffle($attendees);
+
+        foreach($attendees as $attendee) {
+            return array('attendee' => $attendee);
+        }
+
+        return array();
+    }
 }

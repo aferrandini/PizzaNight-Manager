@@ -23,7 +23,7 @@ class ApiController extends Controller
         $attendee = $this->getDoctrine()->getRepository('PizzaNightManagementBundle:Attendee')->findOneBy(array('slug' => $slug));
 
         if($attendee instanceof Attendee) {
-            if($attendee->getStatus()==Attendee::STATUS_ACCEPTED) {
+            if($attendee->getStatus()==Attendee::STATUS_ACCEPTED || $attendee->getStatus()==Attendee::STATUS_CONFIRMED) {
                 $attendee->setStatus(Attendee::STATUS_IN_THE_EVENT);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($attendee);

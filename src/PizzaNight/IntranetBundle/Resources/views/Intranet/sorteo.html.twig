@@ -1,0 +1,5 @@
+{% extends "PizzaNightIntranetBundle::layout.html.twig" %}
+
+{% block content %}
+    <button class="symfony-button-dark-grey" onclick="javascript:document.location='{{ path("_ganador", {"event_id": event_id}) }}'">Buscar ganador</button>
+{% endblock content %}

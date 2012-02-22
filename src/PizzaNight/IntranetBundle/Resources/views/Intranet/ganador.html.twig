@@ -1,0 +1,8 @@
+{% extends "PizzaNightIntranetBundle::layout.html.twig" %}
+
+{% block content %}
+    <div class="float-right"><img src="{{ attendee.contact.gravatarurl }}" class="ui-corner-all" /></div>
+
+    <h1 class="centered">El ganador es...</h1>
+    <h1 class="centered">{{ attendee.contact.name }}</h1>
+{% endblock content %}

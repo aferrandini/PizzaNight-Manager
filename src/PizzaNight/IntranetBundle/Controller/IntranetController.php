@@ -62,7 +62,7 @@ class IntranetController extends Controller
     }
 
     /**
-     * @Route("/ganador", name="_ganador")
+     * @Route("/ganador/{event_id}", name="_ganador")
      * @Template()
      */
     public function ganadorAction($event_id)
